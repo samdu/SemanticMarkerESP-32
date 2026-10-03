@@ -1996,7 +1996,9 @@ void blinkMessageCallback(char *message)
     //! support the blink but using the plugin class
     //! 5.15.25 try the async CLICK
     //! click call  5.26.25 SYNC version
-    main_dispatchSyncCommand(SYNC_CLICK_SOUND);
+    //! daphne: no click here. This runs on every WiFi/MQTT (re)connect, and
+    //! the buzzer is the dog's treat cue -- it must sound only on a feed.
+    //main_dispatchSyncCommand(SYNC_CLICK_SOUND);
     
 #ifdef ESP_M5
     

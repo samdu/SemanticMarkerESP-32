@@ -1345,6 +1345,11 @@ void setupWIFI(char * arg_ssid, char * arg_password)
 #endif
     //!start the WIFI mode and begin
     WiFi.mode(WIFI_STA);
+    //! daphne: scan every channel and join the strongest AP for the SSID.
+    //! The default fast scan joins the first one heard, which on a mesh is
+    //! whichever unit answers first, not the nearest.
+    WiFi.setScanMethod(WIFI_ALL_CHANNEL_SCAN);
+    WiFi.setSortMethod(WIFI_CONNECT_AP_BY_SIGNAL);
     WiFi.begin(arg_ssid, arg_password?arg_password:"");
     
     SerialDebug.println("WIF_STA mode..");
